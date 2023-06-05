@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo">Camera</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="mt-3">
+    <h2 slot="start" class="m-4">Photos</h2>
+    <ion-item fill="none" lines="none">
+      <ion-button (click)="loadPhotos()">Load Photo</ion-button>
+      <ion-button slot="start" (click)="addNewPhoto()">New Photo</ion-button>
+    </ion-item>
+    <ion-list>
+      <ion-item *ngFor="let photo of getPhotos(); let i = index">
+        <ion-thumbnail slot="start">
+          <img [src]="photo" alt="Photo">
+        </ion-thumbnail>
+        <ion-label>{{ photo }}</ion-label>
+        <ion-button (click)="deletePhoto(i)">Delete</ion-button>
+        <ion-button (click)="sharePhoto()">Share</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div>
+    <ion-list>
+      <ion-row>
+        <ion-col *ngFor="let photo of loadedPhotos" size="5" sizeMd="6">
+          <img [src]="photo" alt="Photo">
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </div>
+
+</ion-content>
